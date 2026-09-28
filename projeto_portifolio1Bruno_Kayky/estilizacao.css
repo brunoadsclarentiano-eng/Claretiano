@@ -1,0 +1,622 @@
+/* 
+   DICIONÁRIO DO PROGRAMADOR
+
+   o site se parece com as páginas de um dicionário
+   impresso, mas com os termos escritos em fonte monoespaçada (a mesma
+   fonte de código), porque o produto é justamente um dicionário para
+   quem programa. Cada verbete tem "categoria" (como se fosse a classe
+   gramatical), pronúncia-guia e "veja também", igual a um dicionário
+   de verdade.
+
+   Abordagem: MOBILE-FIRST. Os estilos-base valem para telas pequenas;
+   as media queries no final (a partir da seção 14) ajustam o layout
+   para telas maiores, sempre com min-width.
+
+ */
+
+
+/*
+   1. VARIÁVEIS
+  */
+
+:root {
+  /* Cores: fundo cor de papel, tinta quase preta e vermelho de dicionário
+     (a cor usada para destacar o verbete em livros impressos) */
+  --papel: #f5f1e6;
+  --papel-escuro: #eae3d0;
+  --tinta: #211d16;
+  --tinta-suave: #5b5344;
+  --linha: #d6cbb0;
+  --vermelho: #9c2b1f;
+  --vermelho-escuro: #7a2116;
+  --verde: #3c5a45;
+  --branco: #fffdf8;
+
+  /* Tipografia: serifada para o texto corrido (como um livro),
+     monoespaçada para os termos técnicos (como código) */
+  --fonte-corpo: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --fonte-termo: "IBM Plex Mono", "Courier New", monospace;
+
+  --largura-max: 64rem;
+  --raio: 0.25rem;
+}
+
+
+/* 
+   2. RESET E BASE TIPOGRÁFICA
+    */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--fonte-corpo);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--tinta);
+  background-color: var(--papel);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 0.75rem;
+  font-family: var(--fonte-corpo);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--tinta);
+}
+
+p,
+ul,
+ol,
+dl {
+  margin: 0 0 1rem;
+}
+
+main p {
+  max-width: 62ch;
+}
+
+a {
+  color: var(--vermelho-escuro);
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--vermelho);
+}
+
+address {
+  font-style: normal;
+}
+
+code {
+  font-family: var(--fonte-termo);
+  font-size: 0.9em;
+}
+
+
+/* 
+   3. ACESSIBILIDADE
+   */
+:focus-visible {
+  outline: 0.1875rem solid var(--vermelho-escuro);
+  outline-offset: 0.2rem;
+}
+
+.pular-conteudo {
+  position: absolute;
+  top: -4rem;
+  left: 0.5rem;
+  z-index: 100;
+  padding: 0.75rem 1rem;
+  color: var(--branco);
+  background-color: var(--tinta);
+  border-radius: var(--raio);
+  transition: top 0.2s ease;
+}
+
+.pular-conteudo:focus {
+  top: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* 
+   4. LAYOUT GERAL
+    */
+.container {
+  width: min(100% - 2.5rem, var(--largura-max));
+  margin-inline: auto;
+}
+
+.secao {
+  padding-block: 3rem;
+  border-top: 1px solid var(--linha);
+}
+
+.secao__cabecalho {
+  max-width: 40rem;
+  margin-bottom: 2rem;
+}
+
+.secao__cabecalho p {
+  color: var(--tinta-suave);
+}
+
+.secao h2 {
+  font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.125rem);
+}
+
+.escuro {
+  color: var(--branco);
+  background-color: var(--tinta);
+}
+
+.escuro h1,
+.escuro h2,
+.escuro h3 {
+  color: var(--branco);
+}
+
+.escuro a {
+  color: #f0c9b8;
+}
+
+.escuro .secao__cabecalho p {
+  color: #cfc7b6;
+}
+
+
+/* 
+   5. BOTÕES
+  */
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--fonte-corpo);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--branco);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: var(--vermelho);
+  border: 0.125rem solid var(--vermelho);
+  border-radius: var(--raio);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.botao:hover {
+  color: var(--branco);
+  background-color: var(--vermelho-escuro);
+  border-color: var(--vermelho-escuro);
+  transform: translateY(-0.125rem);
+}
+
+.botao--contorno {
+  color: var(--branco);
+  background-color: transparent;
+  border-color: var(--branco);
+}
+
+.botao--contorno:hover {
+  color: var(--tinta);
+  background-color: var(--branco);
+  border-color: var(--branco);
+}
+
+
+/*
+   6. CABEÇALHO E NAVEGAÇÃO
+  */
+.cabecalho {
+  background-color: var(--branco);
+  border-bottom: 0.1875rem solid var(--tinta);
+}
+
+.cabecalho__interno {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding-block: 0.875rem;
+}
+
+.marca {
+  font-family: var(--fonte-termo);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--tinta);
+  text-decoration: none;
+}
+
+.marca span {
+  color: var(--vermelho);
+}
+
+.menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+}
+
+.menu a {
+  display: inline-block;
+  padding-block: 0.25rem;
+  font-size: 0.9375rem;
+  color: var(--tinta-suave);
+  text-decoration: none;
+  border-bottom: 0.1875rem solid transparent;
+}
+
+.menu a:hover {
+  color: var(--tinta);
+}
+
+.menu a[aria-current="page"] {
+  color: var(--tinta);
+  font-weight: 700;
+  border-bottom-color: var(--vermelho);
+}
+
+
+/* 
+   7. HERO — a página inicial se apresenta como se fosse, ela mesma,
+   um verbete de dicionário.
+   */
+.hero {
+  padding-block: 3rem;
+}
+
+.hero__verbete {
+  max-width: 40rem;
+}
+
+.hero__termo {
+  margin: 0;
+  font-family: var(--fonte-termo);
+  font-size: clamp(1.75rem, 1.3rem + 2.2vw, 2.75rem);
+  color: var(--branco);
+}
+
+.hero__pronuncia {
+  display: block;
+  margin-top: 0.375rem;
+  font-family: var(--fonte-termo);
+  font-size: 1rem;
+  font-weight: 400;
+  color: #cfc7b6;
+}
+
+.hero__categoria {
+  display: inline-block;
+  margin: 1rem 0;
+  padding: 0.2rem 0.625rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--tinta);
+  background-color: var(--branco);
+  border-radius: var(--raio);
+}
+
+.hero__definicao {
+  font-size: 1.1875rem;
+}
+
+.hero__acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+
+/*
+   8. TOPO DAS PÁGINAS INTERNAS
+   */
+.topo-pagina {
+  padding-block: 3rem;
+}
+
+.topo-pagina h1 {
+  font-size: clamp(1.875rem, 1.4rem + 2.4vw, 2.75rem);
+  color: var(--branco);
+}
+
+.topo-pagina p {
+  margin-bottom: 0;
+  font-size: 1.125rem;
+  max-width: 42rem;
+}
+
+
+/* 
+   9. VERBETES
+   Componente principal, reaproveitado na Home, em Sobre, em Serviços
+   e em Cases — sempre com a mesma anatomia de um dicionário.
+   */
+.lista-verbetes {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.verbete {
+  padding-top: 1.5rem;
+  border-top: 0.125rem solid var(--tinta);
+}
+
+.verbete__cabecalho {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.verbete__termo {
+  margin: 0;
+  font-family: var(--fonte-termo);
+  font-size: 1.375rem;
+  color: var(--tinta);
+}
+
+.verbete__categoria {
+  font-family: var(--fonte-corpo);
+  font-size: 0.875rem;
+  font-style: italic;
+  color: var(--tinta-suave);
+}
+
+.verbete__definicao {
+  margin-bottom: 0.75rem;
+}
+
+.verbete__uso {
+  margin: 0 0 0.75rem;
+  padding-left: 1rem;
+  font-size: 0.9375rem;
+  color: var(--tinta-suave);
+  border-left: 0.1875rem solid var(--linha);
+}
+
+.verbete__veja-tambem {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--tinta-suave);
+}
+
+.verbete__veja-tambem strong {
+  color: var(--tinta);
+}
+
+
+/* 
+   10. ETAPAS E LISTAS NUMERADAS (processo, passo a passo)
+   */
+.etapas {
+  display: grid;
+  gap: 1.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: etapa;
+}
+
+.etapas li {
+  counter-increment: etapa;
+  padding-left: 3rem;
+  position: relative;
+}
+
+.etapas li::before {
+  content: counter(etapa);
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  font-family: var(--fonte-termo);
+  font-weight: 700;
+  color: var(--branco);
+  background-color: var(--vermelho);
+  border-radius: 50%;
+}
+
+.etapas h3 {
+  font-size: 1.0625rem;
+}
+
+.etapas p {
+  margin-bottom: 0;
+  color: var(--tinta-suave);
+}
+
+
+/* 
+   11. TABELA DE PLANOS
+  */
+.tabela-rolavel {
+  overflow-x: auto;
+  border: 0.125rem solid var(--tinta);
+  border-radius: var(--raio);
+}
+
+.tabela-rolavel table {
+  width: 100%;
+  min-width: 36rem;
+  border-collapse: collapse;
+  background-color: var(--branco);
+}
+
+.tabela-rolavel caption {
+  padding: 1rem;
+  font-weight: 700;
+  text-align: left;
+  color: var(--tinta);
+  border-bottom: 0.125rem solid var(--tinta);
+}
+
+.tabela-rolavel th,
+.tabela-rolavel td {
+  padding: 0.875rem 1rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--linha);
+}
+
+.tabela-rolavel thead th {
+  color: var(--branco);
+  background-color: var(--tinta);
+}
+
+.tabela-rolavel tbody th {
+  font-family: var(--fonte-termo);
+  font-weight: 700;
+}
+
+.tabela-rolavel tbody tr:last-child th,
+.tabela-rolavel tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+
+
+ 
+
+/* 
+   13. RODAPÉ
+    */
+.rodape {
+  color: #cfc7b6;
+  background-color: var(--tinta);
+  padding-top: 3rem;
+}
+
+.rodape__grade {
+  display: grid;
+  gap: 2rem;
+}
+
+.rodape .marca {
+  color: var(--branco);
+}
+
+.rodape .marca span {
+  color: #f0c9b8;
+}
+
+.rodape__titulo {
+  color: var(--branco);
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.rodape a {
+  color: #f0c9b8;
+}
+
+.rodape ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rodape li {
+  margin-bottom: 0.5rem;
+}
+
+.rodape__base {
+  margin-top: 2rem;
+  padding-block: 1.25rem;
+  font-size: 0.875rem;
+  border-top: 1px solid #443c2f;
+}
+
+.rodape__base p {
+  max-width: none;
+  margin: 0;
+}
+
+
+/*
+   14. MEDIA QUERIES (mobile-first, sempre min-width)
+   40em ≈ 640px | 48em ≈ 768px | 64em ≈ 1024px
+   */
+@media (min-width: 48em) {
+  .cabecalho__interno {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .hero {
+    padding-block: 4.5rem;
+  }
+
+  .topo-pagina {
+    padding-block: 4rem;
+  }
+
+  .lista-verbetes--colunas {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 3rem;
+    row-gap: 0;
+  }
+
+  .lista-verbetes--colunas .verbete {
+    margin-bottom: 2.5rem;
+  }
+
+  .etapas {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2.5rem;
+  }
+
+
+  .rodape__grade {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 64em) {
+  .secao {
+    padding-block: 4rem;
+  }
+
+  .etapas {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

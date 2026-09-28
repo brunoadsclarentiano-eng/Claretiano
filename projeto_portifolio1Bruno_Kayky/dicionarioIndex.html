@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Aplicativo que explica termos técnicos de programação em português simples, para iniciantes em tecnologia.">
+  <title>Dicionário do Programador | Início</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23211d16'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='19' fill='%239c2b1f' text-anchor='middle'%3E{%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap">
+  <!-- Toda a estilização fica no arquivo externo style.css -->
+  <link rel="stylesheet" href="estilizacao.css">
+</head>
+<body>
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+ 
+  <!-- Cabeçalho: marca e navegação principal -->
+  <header class="cabecalho">
+    <div class="container cabecalho__interno">
+      <a class="marca" href="dicionarioIndex.html">dicionário<span>.do.programador</span></a>
+      <nav aria-label="Navegação principal">
+        <ul class="menu">
+            <li><a href="dicionarioIndex.html" aria-current="page">Início</a></li>
+            <li><a href="sobreNos.html">Sobre nós</a></li>
+            <li><a href="servicos.html">Planos</a></li>
+            <li><a href="cases.html">Casos de uso</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+ 
+  <main id="conteudo">
+    <!-- Hero: a própria página inicial se apresenta como um verbete -->
+    <section class="hero escuro" aria-labelledby="titulo-hero">
+      <div class="container">
+        <div class="hero__verbete">
+          <p class="hero__categoria">substantivo masculino</p>
+          <h1 class="hero__termo" id="titulo-hero">
+            dicionário do programador
+      
+          </h1>
+
+          <p class="hero__definicao">Aplicativo que explica, em português simples, os termos técnicos que aparecem nas aulas de programação, com significado, onde o termo é usado e exemplos reais.</p>
+          <div class="hero__acoes">
+            <a class="botao" href="servicos.html">Conhecer os planos</a>
+            <a class="botao botao--contorno" href="sobreNos.html">Como surgiu a ideia</a>
+          </div>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Verbetes de exemplo: mostram como o app explica um termo -->
+    <section class="secao" aria-labelledby="titulo-exemplos">
+      <div class="container">
+        <div class="secao__cabecalho">
+          <h2 id="titulo-exemplos">como são as páginas do dicionário</h2>
+          <p>É assim que qualquer termo aparece dentro do aplicativo: definição curta, onde ele é usado e termos parecidos para continuar estudando.</p>
+        </div>
+ 
+        <div class="lista-verbetes lista-verbetes--colunas">
+          <article class="verbete">
+            <div class="verbete__cabecalho">
+              <h3 class="verbete__termo">API</h3>
+              <span class="verbete__categoria">termo de integração</span>
+            </div>
+            <p class="verbete__definicao">Conjunto de regras que permite que dois programas troquem informações entre si, mesmo tendo sido criados por equipes diferentes.</p>
+            <p class="verbete__uso">Onde usar: quando um aplicativo de previsão do tempo busca os dados em outro sistema, ele está "consultando uma API".</p>
+            <p class="verbete__veja-tambem"><strong>Veja também:</strong> requisição, endpoint, JSON</p>
+          </article>
+ 
+          <article class="verbete">
+            <div class="verbete__cabecalho">
+              <h3 class="verbete__termo">DOM</h3>
+              <span class="verbete__categoria">termo de front-end</span>
+            </div>
+            <p class="verbete__definicao">Representação de uma página HTML em forma de árvore, que o navegador usa para desenhar e atualizar o que aparece na tela.</p>
+            <p class="verbete__uso">Onde usar: quando o JavaScript muda o texto de um botão sem recarregar a página, ele está "alterando o DOM".</p>
+            <p class="verbete__veja-tambem"><strong>Veja também:</strong> HTML, evento, seletor</p>
+          </article>
+ 
+          <article class="verbete">
+            <div class="verbete__cabecalho">
+              <h3 class="verbete__termo">framework</h3>
+              <span class="verbete__categoria">termo geral</span>
+            </div>
+            <p class="verbete__definicao">Conjunto de ferramentas e regras prontas que ajuda a construir um sistema mais rápido, em vez de escrever tudo do zero.</p>
+            <p class="verbete__uso">Onde usar: React e Django são exemplos de framework, um para telas e outro para o funcionamento por trás do site.</p>
+            <p class="verbete__veja-tambem"><strong>Veja também:</strong> biblioteca, boilerplate</p>
+          </article>
+ 
+          <article class="verbete">
+            <div class="verbete__cabecalho">
+              <h3 class="verbete__termo">git</h3>
+              <span class="verbete__categoria">termo de versionamento</span>
+            </div>
+            <p class="verbete__definicao">Ferramenta que guarda o histórico de mudanças de um projeto, permitindo voltar a versões anteriores e trabalhar em equipe sem sobrescrever o trabalho de outra pessoa.</p>
+            <p class="verbete__uso">Onde usar: antes de mudar um código já funcionando, é comum "criar uma branch no git" para testar em segurança.</p>
+            <p class="verbete__veja-tambem"><strong>Veja também:</strong> commit, repositório, GitHub</p>
+          </article>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Como funciona -->
+    <section class="secao" aria-labelledby="titulo-como-funciona">
+      <div class="container">
+        <div class="secao__cabecalho">
+          <h2 id="titulo-como-funciona">Como funciona</h2>
+        </div>
+        <ol class="etapas">
+          <li>
+            <h3>Encontrou um termo que não conhece?</h3>
+            <p>Em uma videoaula, em um tutorial ou em uma mensagem de erro.</p>
+          </li>
+          <li>
+            <h3>Pesquisa no aplicativo</h3>
+            <p>Digita o termo, mesmo sem saber a grafia exata, e o dicionário encontra o verbete.</p>
+          </li>
+          <li>
+            <h3>Entenda o significado</h3>
+            <p>Lê a definição em português simples e vê em que contexto o termo costuma aparecer.</p>
+          </li>
+          <li>
+            <h3>Segue estudando</h3>
+            <p>Usa os links de "veja também" para conhecer termos parecidos, sem sair do assunto.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+ 
+    <!-- Chamada para ação -->
+    <section class="secao escuro" aria-labelledby="titulo-cta">
+      <div class="container">
+        <div class="secao__cabecalho">
+          <h2 id="titulo-cta">Pronto para parar de travar em cada termo novo?</h2>
+          <p>Baixe o aplicativo ou fale com a gente para levar o dicionário para a sua turma ou curso.</p>
+        </div>
+        <div class="hero__acoes">
+          <a class="botao" href="servicos.html">Ver planos</a>
+        </div>
+      </div>
+    </section>
+  </main>
+ 
+  <!-- Rodapé -->
+  <footer class="rodape">
+    <div class="container rodape__grade">
+      <div>
+        <a class="marca" href="dicionarioIndex.html">dicionário<span>.do.programador</span></a>
+        <p>Um verbete de cada vez, da primeira dúvida ao primeiro projeto.</p>
+      </div>
+      <nav aria-label="Links do rodapé">
+        <h2 class="rodape__titulo">Páginas</h2>
+        <ul>
+          <li><a href="dicionarioIndex.html">Início</a></li>
+          <li><a href="sobreNos.html">Sobre nós</a></li>
+          <li><a href="servicos.html">Planos</a></li>
+          <li><a href="cases.html">Casos de uso</a></li>
+        </ul>
+      </nav>
+      <div>
+      
+          <p>Atendimento remoto para todo o Brasil</p>
+        </address>
+      </div>
+    </div>
+    <div class="container rodape__base">
+      <p>© 2026 Dicionário do Programador. Projeto acadêmico: a empresa, as pessoas e os casos de uso apresentados são fictícios.</p>
+    </div>
+  </footer>
+</body>
+</html>
+ 

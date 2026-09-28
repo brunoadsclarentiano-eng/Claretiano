@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Planos gratuito, premium e para escolas do Dicionário do Programador.">
+  <title>Planos | Dicionário do Programador</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23211d16'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='19' fill='%239c2b1f' text-anchor='middle'%3E{%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap">
+  <!-- Toda a estilização fica no arquivo externo -->
+  <link rel="stylesheet" href="estilizacao.css">
+</head>
+<body>
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- Cabeçalho: marca e navegação principal -->
+  <header class="cabecalho">
+    <div class="container cabecalho__interno">
+      <a class="marca" href="dicionarioIndex.html">dicionário<span>.do.programador</span></a>
+      <nav aria-label="Navegação principal">
+        <ul class="menu">
+            <li><a href="dicionarioIndex.html">Início</a></li>
+            <li><a href="sobreNos.html">Sobre nós</a></li>
+            <li><a href="servicos.html" aria-current="page">Planos</a></li>
+            <li><a href="cases.html">Casos de uso</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="topo-pagina escuro" aria-labelledby="titulo-pagina">
+      <div class="container">
+        <h1 id="titulo-pagina">Planos</h1>
+        <p>Do estudante que está começando sozinho até a escola que quer acompanhar uma turma inteira.</p>
+      </div>
+    </section>
+
+    <section class="secao" aria-label="Lista de planos">
+      <div class="container">
+        <div class="lista-verbetes">
+
+          <article class="verbete">
+            <div class="verbete__cabecalho">
+              <h2 class="verbete__termo">plano gratuito</h2>
+              <span class="verbete__categoria">para quem está começando</span>
+            </div>
+            <p class="verbete__definicao">Busca ilimitada de termos, com definição, exemplo de uso e sugestões de "veja também". Suficiente para acompanhar as primeiras aulas e tutoriais.</p>
+            <p class="verbete__uso">Para quem é: estudantes autodidatas, entusiastas e qualquer pessoa curiosa sobre tecnologia.</p>
+            <p class="verbete__veja-tambem"><strong>Veja também:</strong> plano premium</p>
+          </article>
+
+          <article class="verbete">
+            <div class="verbete__cabecalho">
+              <h2 class="verbete__termo">plano premium</h2>
+              <span class="verbete__categoria">para quem quer ir mais fundo</span>
+            </div>
+            <p class="verbete__definicao">Tudo do plano gratuito, mais trilhas de termos organizadas por linguagem ou área (front-end, back-end, dados), sem anúncios e com acesso sem internet.</p>
+            <p class="verbete__uso">Para quem é: estudantes que já escolheram uma área e querem aprofundar o vocabulário técnico dela.</p>
+            <p class="verbete__veja-tambem"><strong>Veja também:</strong> plano gratuito, plano escolas</p>
+          </article>
+
+          <article class="verbete">
+            <div class="verbete__cabecalho">
+              <h2 class="verbete__termo">plano escolas e cursos</h2>
+              <span class="verbete__categoria">para instituições de ensino</span>
+            </div>
+            <p class="verbete__definicao">Tudo do plano premium para toda a turma, mais um painel para o professor acompanhar quais termos os alunos mais pesquisam, e ajustar a aula a partir disso.</p>
+            <p class="verbete__uso">Para quem é: escolas técnicas, cursos livres e cursinhos de tecnologia.</p>
+            <p class="verbete__veja-tambem"><strong>Veja também:</strong> plano premium</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="secao" aria-labelledby="titulo-etapas">
+      <div class="container">
+        <div class="secao__cabecalho">
+          <h2 id="titulo-etapas">Como começar</h2>
+        </div>
+        <ol class="etapas">
+          <li>
+            <h3>Baixe o aplicativo</h3>
+            <p>Disponível para Android e iOS, com o plano gratuito já ativo.</p>
+          </li>
+          <li>
+            <h3>Pesquise seus primeiros termos</h3>
+            <p>Sem cadastro obrigatório para começar a usar.</p>
+          </li>
+          <li>
+            <h3>Avalie o premium</h3>
+            <p>Teste as trilhas por sete dias, sem custo, quando quiser ir mais fundo.</p>
+          </li>
+          <li>
+            <h3>Leve para a turma</h3>
+            <p>Fale com a gente para ativar o plano escolas na sua instituição.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="secao" aria-labelledby="titulo-comparacao">
+      <div class="container">
+        <div class="secao__cabecalho">
+          <h2 id="titulo-comparacao">Comparar planos</h2>
+        </div>
+        <div class="tabela-rolavel" role="region" aria-labelledby="legenda-planos" tabindex="0">
+          <table>
+            <caption id="legenda-planos">O que cada plano inclui</caption>
+            <thead>
+              <tr>
+                <th scope="col">Recurso</th>
+                <th scope="col">Gratuito</th>
+                <th scope="col">Premium</th>
+                <th scope="col">Escolas e cursos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Busca de termos</th>
+                <td>Ilimitada</td>
+                <td>Ilimitada</td>
+                <td>Ilimitada</td>
+              </tr>
+              <tr>
+                <th scope="row">Trilhas por área</th>
+                <td>—</td>
+                <td>Incluídas</td>
+                <td>Incluídas</td>
+              </tr>
+              <tr>
+                <th scope="row">Acesso sem internet</th>
+                <td>—</td>
+                <td>Incluído</td>
+                <td>Incluído</td>
+              </tr>
+              <tr>
+                <th scope="row">Painel do professor</th>
+                <td>—</td>
+                <td>—</td>
+                <td>Incluído</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chamada para ação -->
+    <section class="secao escuro" aria-labelledby="titulo-cta">
+      <div class="container">
+        <div class="secao__cabecalho">
+          <h2 id="titulo-cta">Pronto para parar de travar em cada termo novo?</h2>
+          <p>Baixe o aplicativo ou fale com a gente para levar o dicionário para a sua turma ou curso.</p>
+        </div>
+        <div class="hero__acoes">
+          <a class="botao" href="servicos.html">Ver planos</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="rodape">
+    <div class="container rodape__grade">
+      <div>
+        <a class="marca" href="dicionarioIndex.html">dicionário<span>.do.programador</span></a>
+        <p>Um verbete de cada vez, da primeira dúvida ao primeiro projeto.</p>
+      </div>
+      <nav aria-label="Links do rodapé">
+        <h2 class="rodape__titulo">Páginas</h2>
+        <ul>
+          <li><a href="dicionarioIndex.html">Início</a></li>
+          <li><a href="sobreNos.html">Sobre nós</a></li>
+          <li><a href="servicos.html">Planos</a></li>
+          <li><a href="cases.html">Casos de uso</a></li>   
+        </ul>
+      </nav>
+      <div>
+       
+        <address>
+          <p>Atendimento remoto para todo o Brasil</p>
+        </address>
+      </div>
+    </div>
+    <div class="container rodape__base">
+      <p>© 2026 Dicionário do Programador. Projeto acadêmico: a empresa, as pessoas e os casos de uso apresentados são fictícios.</p>
+    </div>
+  </footer>
+</body>
+</html>
